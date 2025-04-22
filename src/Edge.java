@@ -1,0 +1,94 @@
+public class Edge {
+	private int from;        // Source vertex
+	private int to;          // Destination vertex
+	private int capacity;    // Maximum capacity of the edge
+	private int flow;        // Current flow through the edge
+
+	/**
+	 * Constructor for creating a directed edge
+	 *
+	 * @param from     The source vertex
+	 * @param to       The destination vertex
+	 * @param capacity The maximum capacity of the edge
+	 */
+	public Edge(int from, int to, int capacity) {
+		this.from = from;
+		this.to = to;
+		this.capacity = capacity;
+		this.flow = 0;
+	}
+
+	/**
+	 * Get the source vertex
+	 *
+	 * @return The source vertex
+	 */
+	public int getFrom() {
+		return from;
+	}
+
+	/**
+	 * Get the destination vertex
+	 *
+	 * @return The destination vertex
+	 */
+	public int getTo() {
+		return to;
+	}
+
+	/**
+	 * Get the capacity of the edge
+	 *
+	 * @return The capacity
+	 */
+	public int getCapacity() {
+		return capacity;
+	}
+
+	/**
+	 * Get the current flow through the edge
+	 *
+	 * @return The current flow
+	 */
+	public int getFlow() {
+		return flow;
+	}
+
+	/**
+	 * Set the flow through the edge
+	 *
+	 * @param flow The new flow value
+	 */
+	public void setFlow(int flow) {
+		this.flow = flow;
+	}
+
+	/**
+	 * Calculate the residual capacity of the edge
+	 *
+	 * @return The residual capacity (capacity - flow)
+	 */
+	public int getResidualCapacity() {
+		return capacity - flow;
+	}
+
+	/**
+	 * Add additional flow to the edge
+	 *
+	 * @param additionalFlow The amount of flow to add
+	 */
+	public void addFlow(int additionalFlow) {
+		this.flow += additionalFlow;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Edge{" +
+			"from=" + from +
+			", to=" + to +
+			", capacity=" + capacity +
+			", flow=" + flow +
+			'}';
+	}
+}

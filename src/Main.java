@@ -4,14 +4,14 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			String filePath = "benchmarks/bridge_19.txt";
-			Parser.GraphData graphData = Parser.parseFile(filePath);
-			
-			System.out.println("Parsed graph data from " + filePath + ":");
-			System.out.println("Number of nodes: " + graphData.getNumNodes());
-			System.out.println("Number of edges: " + graphData.getEdges().size());
+			Graph graph = Parser.parseFile(filePath);
+
+			System.out.println("Parsed graph from " + filePath + ":");
+			System.out.println("Number of nodes: " + graph.numNodes());
+			System.out.println("Number of edges: " + graph.edges().size());
 			System.out.println("Edges:");
 
-			for (Edge edge : graphData.getEdges()) {
+			for (Edge edge : graph.edges()) {
 				System.out.println("  " + edge);
 			}
 		} catch (IOException e) {

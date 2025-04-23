@@ -78,6 +78,10 @@ public class Edge {
 	 * @param additionalFlow The amount of flow to add
 	 */
 	public void addFlow(int additionalFlow) {
+		if (additionalFlow > getResidualCapacity()) {
+			throw new IllegalArgumentException("Cannot add flow greater than residual capacity");
+		}
+		
 		this.flow += additionalFlow;
 	}
 

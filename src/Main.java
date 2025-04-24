@@ -1,22 +1,33 @@
 import java.io.IOException;
 
 public class Main {
-	public static void main(String[] args) {
-		try {
-			String filePath = "benchmarks/bridge_19.txt";
-			Graph graph = Parser.parseFile(filePath);
+	public static void main(String[] args) throws IOException {
+		final String filePath = "benchmarks/bridge_2.txt";
 
-			System.out.println("Parsed graph from " + filePath + ":");
-			System.out.println("Number of nodes: " + graph.numNodes());
-			System.out.println("Number of edges: " + graph.edges().size());
-			System.out.println("Edges:");
+		Parser.DataGraph data = Parser.parseFile(filePath);
+		Graph graph = new Graph(data.numNodes(), data.edges());
 
-			for (Edge edge : graph.edges()) {
-				System.out.println("  " + edge);
+		printGraphData(graph, filePath);
+
+	}
+
+	public static void printGraphData(Graph graph, String filePath) {
+		System.out.println("\nDirected Graph of " + filePath);
+		System.out.println(graph);
+
+		int nodeToCheck = 1;
+		if (graph.getNumNodes() > 0) {
+			System.out.println("Outgoing edges from node " + nodeToCheck + ":");
+			for (Edge edge : graph.getOutgoingEdges(nodeToCheck)) {
+				System.out.println("  " + nodeToCheck + " -> " + edge.getTo() +
+					" (capacity: " + edge.getCapacity() + ")");
 			}
-		} catch (IOException e) {
-			System.err.println("Error reading file: " + e.getMessage());
-			e.printStackTrace();
+
+			System.out.println("Incoming edges to node " + nodeToCheck + ":");
+			for (Edge edge : graph.getIncomingEdges(nodeToCheck)) {
+				System.out.println("  " + edge.getFrom() + " -> " + nodeToCheck +
+					" (capacity: " + edge.getCapacity() + ")");
+			}
 		}
 	}
 }

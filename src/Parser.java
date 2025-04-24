@@ -19,7 +19,7 @@ public class Parser {
 	 * @return A Graph object containing the number of nodes and list of edges
 	 * @throws IOException If an I/O error occurs
 	 */
-	public static Graph parseFile(String filePath) throws IOException {
+	public static DataGraph parseFile(String filePath) throws IOException {
 		List<Edge> edges = new ArrayList<>();
 		int numNodes;
 
@@ -39,6 +39,38 @@ public class Parser {
 			}
 		}
 
-		return new Graph(numNodes, edges);
+		return new DataGraph(numNodes, edges);
 	}
+
+	public record DataGraph(int numNodes, List<Edge> edges) {
+		/**
+		 * Get the number of nodes in the graph.
+		 *
+		 * @return The number of nodes
+		 */
+		@Override
+		public int numNodes() {
+			return numNodes;
+		}
+
+		/**
+		 * Get the list of edges in the graph.
+		 *
+		 * @return The list of edges
+		 */
+		@Override
+		public List<Edge> edges() {
+			return edges;
+		}
+
+
+		@Override
+		public String toString() {
+			return "Graph{" +
+				"numNodes=" + numNodes +
+				", edges=" + edges +
+				'}';
+		}
+	}
+
 }

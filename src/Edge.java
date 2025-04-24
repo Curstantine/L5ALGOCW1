@@ -1,8 +1,8 @@
 public class Edge {
-	private int from;        // Source vertex
-	private int to;          // Destination vertex
-	private int capacity;    // Maximum capacity of the edge
-	private int flow;        // Current flow through the edge
+	private final int from;
+	private final int to;
+	private final int capacity;
+	private int flow;
 
 	/**
 	 * Constructor for creating a directed edge
@@ -81,7 +81,7 @@ public class Edge {
 		if (additionalFlow > getResidualCapacity()) {
 			throw new IllegalArgumentException("Cannot add flow greater than residual capacity");
 		}
-		
+
 		this.flow += additionalFlow;
 	}
 

@@ -30,7 +30,7 @@ public class MaxFlow {
 		int maxFlow = 0;
 		int[] parent = new int[graph.getNumNodes()];
 		Graph residualGraph = createResidualGraph();
-		
+
 		while (bfs(residualGraph, parent)) {
 			iterationCount++;
 
@@ -45,12 +45,10 @@ public class MaxFlow {
 				if (edge != null) pathFlow = Math.min(pathFlow, edge.getResidualCapacity());
 			}
 
-			// Update the flows in the original graph
 			for (int v = sink; v != source; v = parent[v]) {
 				int u = parent[v];
-
-				// Check if this is a forward edge or a backward edge in the original graph
 				Edge originalEdge = graph.getEdge(u, v);
+
 				if (originalEdge != null) {
 					// Forward-edge - increase flow
 					originalEdge.addFlow(pathFlow);

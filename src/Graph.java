@@ -71,29 +71,7 @@ public class Graph {
 		}
 		return Collections.unmodifiableList(adjacencyList.get(node));
 	}
-
-	/**
-	 * Gets all incoming edges to a node.
-	 * <p>
-	 * Note: repeated calls might be inefficient as the method is of O(E) complexity, E being {@link #allEdges}
-	 *
-	 * @param node The node index
-	 * @return List of incoming edges
-	 */
-	public List<Edge> getIncomingEdges(int node) {
-		if (node < 0 || node >= numNodes) {
-			throw new IllegalArgumentException("Node index out of bounds: " + node);
-		}
-
-		List<Edge> incomingEdges = new ArrayList<>();
-		for (Edge edge : allEdges) {
-			if (edge.getTo() == node) {
-				incomingEdges.add(edge);
-			}
-		}
-		return incomingEdges;
-	}
-
+ 
 	/**
 	 * Gets all edges in the graph.
 	 *

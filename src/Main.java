@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 	static final String folderPath = "./benchmarks";
@@ -46,7 +47,7 @@ public class Main {
 		System.out.println("\n--- Summary ---");
 		System.out.println("Total iterations: " + maxFlow.getIterationCount());
 		System.out.println("Maximum flow from node " + source + " to node " + sink + ": " + maxFlowValue);
-		System.out.println("Elapsed time: " + (System.nanoTime() - startTime) / 1_000_000_000 + " s");
+		System.out.println("Elapsed time: " + TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime) + "ms");
 	}
 
 	static int extractTestNumber(String filename) {

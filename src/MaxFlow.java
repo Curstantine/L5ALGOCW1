@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Implementation of the Ford-Fulkerson algorithm with BFS for finding maximum flow in a flow network.
@@ -7,18 +9,13 @@ public class MaxFlow {
 	private final Graph graph;
 	private final int source;
 	private final int sink;
+	private int iterationCount;
 
-	/**
-	 * Constructs a MaxFlow object for a given graph, source, and sink.
-	 *
-	 * @param graph  The flow network
-	 * @param source The source node
-	 * @param sink   The sink node
-	 */
 	public MaxFlow(Graph graph, int source, int sink) {
 		this.graph = graph;
 		this.source = source;
 		this.sink = sink;
+		this.iterationCount = 0;
 	}
 
 	/**
@@ -28,13 +25,15 @@ public class MaxFlow {
 	 */
 	public int computeMaxFlow() {
 		graph.resetFlows();
+		iterationCount = 0;
 
 		int maxFlow = 0;
 		int[] parent = new int[graph.getNumNodes()];
-
 		Graph residualGraph = createResidualGraph();
-
+		
 		while (bfs(residualGraph, parent)) {
+			iterationCount++;
+
 			// Note: MAX_VALUE is being used as the resolution code depends on the minimum
 			// value of path flow and residual capacity to find the bottleneck
 			int pathFlow = Integer.MAX_VALUE;
@@ -130,5 +129,15 @@ public class MaxFlow {
 
 		// If we reached the sink in BFS, then there is an augmenting path
 		return visited[sink];
+	}
+
+
+	/**
+	 * Get the iteration count of this run.
+	 *
+	 * @return Integer of the iterations
+	 */
+	public int getIterationCount() {
+		return iterationCount;
 	}
 }

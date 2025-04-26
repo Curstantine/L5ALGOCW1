@@ -1,3 +1,8 @@
+/*
+ * Name: Rachala Ovin Gunawardana
+ * UoW ID: 20522735
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;

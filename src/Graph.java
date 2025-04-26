@@ -1,3 +1,8 @@
+/*
+ * Name: Rachala Ovin Gunawardana
+ * UoW ID: 20522735
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,7 +76,7 @@ public class Graph {
 		}
 		return Collections.unmodifiableList(adjacencyList.get(node));
 	}
- 
+
 	/**
 	 * Gets all edges in the graph.
 	 *
@@ -97,26 +102,6 @@ public class Graph {
 	 */
 	public int getNumEdges() {
 		return allEdges.size();
-	}
-
-	/**
-	 * Checks if there is an edge from source to destination.
-	 *
-	 * @param from Source node
-	 * @param to   Destination node
-	 * @return true if the edge exists, false otherwise
-	 */
-	public boolean hasEdge(int from, int to) {
-		if (from < 0 || from >= numNodes || to < 0 || to >= numNodes) {
-			return false;
-		}
-
-		for (Edge edge : adjacencyList.get(from)) {
-			if (edge.getTo() == to) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**
